@@ -2,7 +2,7 @@ import React from "react";
 
 const JourneyPage = () => {
   const stats = [
-    { label: "Distance", value: "2.5 km" },
+    { label: "Distance", value: "4.1 km" },
     { label: "No. of Obstacles", value: "12" },
     { label: "Survey Responses", value: "156" },
   ];
@@ -12,7 +12,7 @@ const JourneyPage = () => {
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Title */}
         <h1 className="text-4xl font-bold text-center text-white mb-16 tracking-tight">
-          X Place to Y Place
+        Vile Parle to Andheri
         </h1>
 
         {/* Stats Cards */}

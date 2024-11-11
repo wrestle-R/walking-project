@@ -6,31 +6,44 @@ import malad from "../assets/image3.jpeg";
 import bandra from "../assets/image4.jpg";
 
 const slides = [
+    {
+    title: "Walk 6",
+    subtitle: "Goregaon to Malad",
+    description: "Distance: 4.2 kilometers",
+    image: juhu,
+    path: "/walk6",
+  },
   {
+    title: "Walk 5",
+    subtitle: "Jogeshwari to Goregaon",
+    description: "Distance: 3.8 kilometers",
+    image: juhu,
+    path: "/walk5",
+  },{
     title: "Walk 4",
-    subtitle: "Malad to Juhu",
-    description: "Distance: 8.3 kilometers",
+    subtitle: "Andheri to Jogeshwari",
+    description: "Distance: 4.3 kilometers",
     image: juhu,
     path: "/walk4",
   },
   {
     title: "Walk 3",
-    subtitle: "Jogeshwari to Malad",
-    description: "Distance: 5.5 kilometers",
+    subtitle: "Vile Parle to Andheri",
+    description: "Distance: 4.1 kilometers",
     image: malad,
     path: "/walk3",
   },
   {
     title: "Walk 2",
-    subtitle: "Santacruz to Jogeshwari",
-    description: "Distance: 6.8 kilometers",
+    subtitle: "Santacruz to Vile Parle",
+    description: "Distance: 3.2 kilometers",
     image: santacruz,
     path: "/walk2",
   },
   {
     title: "Walk 1",
     subtitle: "Bandra to Santacruz",
-    description: "Distance: 4.2 kilometers",
+    description: "Distance: 3.5 kilometers",
     image: bandra,
     path: "/walk1",
   },
