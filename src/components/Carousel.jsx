@@ -1,36 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import santacruz from "../assets/image1.jpg";
-import juhu from "../assets/image2.jpg";
-import malad from "../assets/image3.jpeg";
-import bandra from "../assets/image4.jpg";
+import santacruz from "../assets/santacruz.jpg";
+import andheri from "../assets/andheri.jpg";
+import vile from "../assets/vileparle.jpg";
+import bandra from "../assets/bandra.jpg";
+import kandivali from "../assets/kandivali.jpg";
+import Jogeshwari from "../assets/jogeshwari.jpeg";
+
+import Navbar from "./Navbar";
 
 const slides = [
-    {
+  {
+    title: "Walk 8",
+    subtitle: "Kandivali to Borivali",
+    description: "Distance: 4.2 kilometers",
+    image: kandivali,
+    path: "/walk8",
+  },
+  {
+    title: "Walk 7",
+    subtitle: "Malad to Kandivali",
+    description: "Distance: 4.1 kilometers",
+    image: andheri,
+    path: "/walk7",
+  },
+  {
     title: "Walk 6",
     subtitle: "Goregaon to Malad",
-    description: "Distance: 4.2 kilometers",
-    image: juhu,
+    description: "Distance: 3.8 kilometers",
+    image: andheri,
     path: "/walk6",
   },
   {
     title: "Walk 5",
     subtitle: "Jogeshwari to Goregaon",
     description: "Distance: 3.8 kilometers",
-    image: juhu,
+    image: Jogeshwari,
     path: "/walk5",
-  },{
+  },
+  {
     title: "Walk 4",
     subtitle: "Andheri to Jogeshwari",
     description: "Distance: 4.3 kilometers",
-    image: juhu,
+    image: andheri,
     path: "/walk4",
   },
   {
     title: "Walk 3",
     subtitle: "Vile Parle to Andheri",
     description: "Distance: 4.1 kilometers",
-    image: malad,
+    image: vile,
     path: "/walk3",
   },
   {
@@ -103,14 +122,13 @@ const Slide = ({ slide, offset }) => {
         <div
           className="fixed inset-0 bg-cover bg-center -z-10 opacity-0 transition-all duration-500 pointer-events-none"
           style={{
-            backgroundImage: `url(${slide.image})`,
             opacity: active ? 0.15 : 0,
             transform: `translateX(calc(10% * var(--dir)))`,
           }}
         />
         <div
           onClick={() => active && navigate(slide.path)}
-          className={`w-[30vw] h-[40vw] bg-cover bg-center grid content-center cursor-pointer rounded-lg overflow-hidden ${
+          className={`w-[30vw] h-[36vw] bg-cover bg-center grid content-center cursor-pointer rounded-lg overflow-hidden ${
             active
               ? "opacity-100 hover:translate-y-1 hover:translate-x-1 hover:shadow-2xl transition-transform duration-500 ease-out"
               : "opacity-60 pointer-events-none"
@@ -130,10 +148,10 @@ const Slide = ({ slide, offset }) => {
               active ? "opacity-100" : "opacity-0"
             }`}
           >
-            <h2 className="text-2xl font-normal tracking-widest uppercase m-0">
+            <h2 className="text-2xl font-bold tracking-widest uppercase mb-1">
               {slide.title}
             </h2>
-            <h3 className="text-2xl font-normal tracking-widest uppercase m-0 before:content-['—_']">
+            <h3 className="text-2xl font-normal tracking-widest uppercase mb-1 ">
               {slide.subtitle}
             </h3>
             <p className="m-0 text-sm tracking-widest">{slide.description}</p>
@@ -165,29 +183,51 @@ const ImageCarousel = () => {
     { slideIndex: 0 }
   );
 
+  useEffect(() => {
+    const handleKeydown = (event) => {
+      if (event.key === "ArrowLeft") {
+        dispatch({ type: "PREV" });
+      } else if (event.key === "ArrowRight") {
+        dispatch({ type: "NEXT" });
+      }
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, [dispatch]);
+
   return (
-    <div className="h-screen w-screen bg-[#000000] text-white overflow-hidden flex justify-center items-center">
-      <div className="grid relative">
-        <button
-          onClick={() => dispatch({ type: "PREV" })}
-          className="appearance-none bg-transparent border-none text-white absolute text-5xl w-20 h-20 top-[30%] -left-[50%] transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110 hover:text-yellow-400 focus:outline-none z-5"
-        >
-          ‹
-        </button>
-
-        {[...slides, ...slides, ...slides].map((slide, i) => {
-          let offset = slides.length + (state.slideIndex - i);
-          return <Slide slide={slide} offset={offset} key={i} />;
-        })}
-
-        <button
-          onClick={() => dispatch({ type: "NEXT" })}
-          className="appearance-none bg-transparent border-none text-white absolute text-5xl w-20 h-20 top-[30%] -right-[50%] transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110 hover:text-yellow-400 focus:outline-none z-5"
-        >
-          ›
-        </button>
+    <>
+      <div className="bg-[#1e1e1e] ">
+        <Navbar />
+        <hr />
       </div>
-    </div>
+      <div className="h-screen w-screen bg-[#1e1e1e] text-white overflow-hidden flex justify-center items-center">
+        <div className="grid relative">
+          <button
+            onClick={() => dispatch({ type: "PREV" })}
+            className="appearance-none bg-transparent border-none text-white absolute text-5xl w-20 h-20 top-[30%] -left-[50%] transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-110 hover:text-yellow-400 focus:outline-none z-5"
+          >
+            ‹
+          </button>
+
+          {[...slides, ...slides, ...slides].map((slide, i) => {
+            let offset = slides.length + (state.slideIndex - i);
+            return <Slide slide={slide} offset={offset} key={i} />;
+          })}
+
+          <button
+            onClick={() => dispatch({ type: "NEXT" })}
+            className="appearance-none bg-transparent border-none text-white absolute text-5xl w-20 h-20 top-[30%] -right-[50%] transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110 hover:text-yellow-400 focus:outline-none z-5"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 

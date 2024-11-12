@@ -17,31 +17,31 @@ import Navbar from "./Navbar";
 
 const JourneyPage = () => {
   const stats = [
-    { label: "Distance", value: "4.1 km" },
-    { label: "No. of Obstacles", value: "12" },
-    { label: "Survey Responses", value: "165" },
+    { label: "Distance", value: "3.8 km" },
+    { label: "No. of Obstacles", value: "8" },
+    { label: "Survey Responses", value: "142" },
   ];
 
-  const accessibilityData = [
-    { category: "Broken Pavements", count: 4 },
-    { category: "Street Vendors", count: 5 },
-    { category: "Parked Vehicles", count: 2 },
-    { category: "Construction", count: 1 },
+  const obstaclesData = [
+    { category: "Hawkers/Vendors", count: 4 },
+    { category: "Broken/Uneven Surfaces", count: 2 },
+    { category: "Missing Footpath Segments", count: 2 },
+    { category: "Well-Maintained Footpath", count: 6 },
   ];
 
   const pedestrianData = [
-    { time: "6 AM", count: 250 },
-    { time: "9 AM", count: 520 },
-    { time: "12 PM", count: 320 },
-    { time: "3 PM", count: 380 },
-    { time: "6 PM", count: 580 },
-    { time: "9 PM", count: 280 },
+    { time: "6 AM", count: 150 },
+    { time: "9 AM", count: 400 },
+    { time: "12 PM", count: 280 },
+    { time: "3 PM", count: 320 },
+    { time: "6 PM", count: 470 },
+    { time: "9 PM", count: 220 },
   ];
 
   const maintenanceData = [
-    { type: "Good", value: 75, color: "#4CAF50" },
-    { type: "Fair", value: 20, color: "#FFC107" },
-    { type: "Poor", value: 5, color: "#F44336" },
+    { type: "Good", value: 65, color: "#4CAF50" },
+    { type: "Fair", value: 25, color: "#FFC107" },
+    { type: "Poor", value: 10, color: "#F44336" },
   ];
 
   return (
@@ -54,7 +54,7 @@ const JourneyPage = () => {
         <div className="max-w-6xl mx-auto px-4 py-12">
           {/* Title */}
           <h1 className="text-4xl font-bold text-center text-white mb-16 tracking-tight">
-            Vile Parle to Andheri
+            Malad to Kandivali
           </h1>
 
           {/* Stats Cards */}
@@ -75,14 +75,17 @@ const JourneyPage = () => {
           {/* Analysis Section */}
           <div className="mb-16">
             <p className="text-gray-300 leading-relaxed text-lg">
-              The Vile Parle to Andheri stretch spans 4.1 kilometers and
-              represents one of the better-maintained pedestrian corridors in
-              Mumbai's western suburbs. Our analysis, based on 165 survey
-              responses, reveals a well-planned urban walkway with notably wide
-              footpaths and organized commercial zones. The route benefits from
-              recent infrastructure improvements, including properly designated
-              crossing points and improved street lighting, making it
-              particularly pedestrian-friendly even during evening hours.
+              The 3.8-kilometer stretch from Malad to Kandivali was generally
+              well-maintained, with a mostly continuous footpath along the
+              route. According to our survey of 142 respondents, the footpath
+              was in good condition for the majority of the journey, with only a
+              few breaks and uneven surfaces. The primary challenge identified
+              was the presence of hawkers and street vendors occupying portions
+              of the footpath, forcing pedestrians to navigate around them or
+              walk on the road. Overall, the walkability of this stretch was
+              better than the previous route, but there is still room for
+              improvement in maintaining clear and unobstructed pedestrian
+              access.
             </p>
           </div>
 
@@ -91,10 +94,10 @@ const JourneyPage = () => {
             {/* Obstacles Chart */}
             <div className="bg-gray-800 rounded-xl p-6 aspect-square">
               <h3 className="text-lg font-medium text-blue-400 mb-4 text-center">
-                Types of Obstacles
+                Infrastructure Obstacles
               </h3>
               <ResponsiveContainer width="100%" height="80%">
-                <BarChart data={accessibilityData}>
+                <BarChart data={obstaclesData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="category" />
                   <YAxis />
@@ -150,15 +153,18 @@ const JourneyPage = () => {
           {/* Key Findings */}
           <div className="mb-16">
             <p className="text-gray-300 leading-relaxed text-lg">
-              The data reveals significant pedestrian activity, with peak flows
-              reaching 580 people during evening rush hours (6 PM) and 520
-              during morning commutes (9 AM). Infrastructure assessment shows an
-              impressive 75% of the stretch in good condition, with only 5%
-              requiring attention. The primary challenges include some broken
-              pavements and regulated street vendor zones, though these are
-              well-managed compared to other areas. The route's proximity to
-              both railway stations contributes to its high utilization, while
-              recent improvements have significantly enhanced its walkability.
+              The analysis of the Malad to Kandivali stretch reveals that 65% of
+              the infrastructure is in good condition, with only a few areas of
+              concern, such as broken or uneven surfaces and missing footpath
+              segments. The most significant obstacle identified was the
+              presence of hawkers and street vendors occupying portions of the
+              footpath, which impacted pedestrian flow. Despite these
+              challenges, the route experiences substantial pedestrian traffic,
+              peaking at 470 people during the evening rush hour (6 PM) and 400
+              during the morning commute (9 AM). Maintaining the existing
+              infrastructure and addressing the vendor encroachment issues would
+              greatly enhance the walkability and safety of this well-utilized
+              stretch.
             </p>
           </div>
 
@@ -167,7 +173,7 @@ const JourneyPage = () => {
             {/* Google My Maps */}
             <div className="w-full h-[80vh]">
               <iframe
-                src="https://www.google.com/maps/d/embed?mid=1TnjqBM5eoHbAskg3RUWRpWiQKzCTIWA&ehbc=2E312F"
+                src=""
                 width="100%"
                 height="100%"
                 title="Route Map"
@@ -178,7 +184,7 @@ const JourneyPage = () => {
             {/* Mapillary */}
             <div className="w-full h-[80vh]">
               <iframe
-                src="https://www.mapillary.com/embed?map_style=OpenStreetMap&image_key=1240144430506052&x=0.5&y=0.5&style=photo"
+                src="https://www.mapillary.com/embed?map_style=Mapillary%20light&image_key=2551481258378160&x=0.4999999999999994&y=0.5&style=photo"
                 width="100%"
                 height="100%"
                 frameBorder="0"

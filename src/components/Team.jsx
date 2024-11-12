@@ -1,69 +1,82 @@
 import React from "react";
 import RusselImg from "../assets/russel.png";
 import Navbar from "./Navbar";
+import EeshaniImg from "../assets/eeshani.jpg";
+import GavinImg from "../assets/gavin.jpg";
+import RomeiroImg from "../assets/romeiro.jpg";
+import AliqyaanImg from "../assets/aliqyaan.jpg";
+import ReniyasImg from "../assets/reniyas.jpg";
+import DylanImg from "../assets/dylan.jpg";
+import MayankImg from "../assets/mayank.jpg";
+import LizaImg from "../assets/liza.jpg";
+import KhizerImg from "../assets/khizer.jpeg";
 
 const Team = () => {
   const teamMembers = [
     {
-      name: "EESHANI THAKUR",
-      bio: "Leading our organization's mission to create more walkable cities.",
-      image: RusselImg,
-    },
-    {
-      name: "LIZA CASTELLINO",
-      bio: "Expert in sustainable urban design and pedestrian infrastructure.",
-      image: RusselImg,
-    },
-    {
-      name: "GAVIN SOARES",
-      bio: "Building bridges between communities and urban development initiatives.",
-      image: RusselImg,
-    },
-    {
-      name: "KHIZER ANSARI",
-      bio: "Overseeing the technological aspects of our pedestrian mapping projects.",
-      image: RusselImg,
-    },
-    {
-      name: "MAYANK MEHTA",
-      bio: "Conducting studies on urban walkability and its impact on communities.",
-      image: RusselImg,
-    },
-    {
-      name: "DYLAN MASCARENHAS",
-      bio: "Managing our various urban improvement initiatives across the city.",
+      name: "RUSSEL DANIEL PAUL",
+      bio: "Website, PPT, Walks, Mapping, Surveys.",
       image: RusselImg,
     },
     {
       name: "ROMEIRO FERNANDES",
-      bio: "Sharing our story and impact with the world.",
-      image: RusselImg,
+      bio: "Website, PPT, Walks, Mapping, Surveys.",
+      image: RomeiroImg,
     },
+
     {
-      name: "RUSSEL DANIEL PAUL",
-      bio: "Designing safer and more accessible pedestrian pathways.",
-      image: RusselImg,
-    },
-    {
-      name: "ALIQYAAN MAHIMWALA",
-      bio: "Working with local government to implement pedestrian-friendly policies.",
-      image: RusselImg,
+      name: "MAYANK MEHTA",
+      bio: "PPT, Walks, Mapping, Surveys, Reports.",
+      image: MayankImg,
     },
     {
       name: "RENIYAS NADAR",
-      bio: "Organizing local events and educational programs about urban walkability.",
-      image: RusselImg,
+      bio: "PPT, Walks, Surveys, Reports.",
+      image: ReniyasImg,
+    },
+    {
+      name: "DYLAN MASCARENHAS",
+      bio: "PPT, Walks, Surveys, Reports.",
+      image: DylanImg,
+    },
+    {
+      name: "LIZA CASTELLINO",
+      bio: "PPT, Walks, Mapping, Surveys.",
+      image: LizaImg,
+    },
+    {
+      name: "KHIZER ANSARI",
+      bio: "PPT, Walks, Mapping, Surveys.",
+      image: KhizerImg,
+    },
+    {
+      name: "GAVIN SOARES",
+      bio: "Walks, Mapping, Surveys, Reports.",
+      image: GavinImg,
+    },
+    {
+      name: "ALIQYAAN MAHIMWALA",
+      bio: "Website, Walks, Surveys.",
+      image: AliqyaanImg,
+    },
+    {
+      name: "EESHANI THAKUR",
+      bio: "PPT, Walks, Surveys.",
+      image: EeshaniImg,
     },
   ];
 
   return (
     <>
-      <Navbar />
-      <div className="min-h-screen bg-slate-100 py-12 px-8">
+      <div className="bg-[#1e1e1e]">
+        <Navbar />
+        <hr />
+      </div>
+      <div className="min-h-screen bg-[#1e1e1e] py-12 px-8">
         <div className="w-4/6 mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
-            <h1 className="text-5xl font-bold text-slate-800 mb-6 tracking-tight">
+            <h1 className="text-5xl font-bold text-white mb-6 tracking-tight">
               Our Team
             </h1>
           </div>
@@ -73,12 +86,12 @@ const Team = () => {
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 min-h-[140px] transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg hover:bg-slate-50 "
+                className="bg-[#f2f2f2] rounded-2xl p-8 shadow-sm min-h-[140px] transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg hover:bg-slate-200"
               >
                 <div className="flex items-center gap-8">
                   {/* Avatar */}
                   <div className="flex-shrink-0">
-                    <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-slate-200">
+                    <div className="w-32 h-32 rounded-full overflow-hidden">
                       <img
                         src={member.image}
                         alt={member.name}
