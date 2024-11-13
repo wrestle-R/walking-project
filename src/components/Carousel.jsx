@@ -205,7 +205,7 @@ const ImageCarousel = () => {
         <Navbar />
         <hr />
       </div>
-      <div className="h-screen w-screen bg-[#1e1e1e] text-white overflow-hidden flex justify-center items-center">
+      <div className="h-[91.74vh] w-screen bg-[#1e1e1e] text-white overflow-hidden flex justify-center items-center">
         <div className="grid relative">
           <button
             onClick={() => dispatch({ type: "PREV" })}

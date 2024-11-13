@@ -2,8 +2,6 @@ import React from "react";
 import {
   LineChart,
   Line,
-  BarChart,
-  Bar,
   PieChart,
   Pie,
   XAxis,
@@ -11,37 +9,51 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Legend,
   Cell,
 } from "recharts";
 import Navbar from "./Navbar";
 
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <p className="text-white">{`Location: ${label}`}</p>
+        <p className="text-blue-400">{`Obstacles: ${payload[0].value}`}</p>
+      </div>
+    );
+  }
+  return null;
+};
+
 const JourneyPage = () => {
   const stats = [
     { label: "Distance", value: "4.1 km" },
-    { label: "No. of Obstacles", value: "12" },
+    { label: "No. of Obstacles", value: "40" },
     { label: "Survey Responses", value: "165" },
   ];
 
-  const accessibilityData = [
-    { category: "Broken Pavements", count: 4 },
-    { category: "Street Vendors", count: 5 },
-    { category: "Parked Vehicles", count: 2 },
-    { category: "Construction", count: 1 },
+  const obstacleDistributionData = [
+    { point: "Bandra Station", distance: "0.0", obstacles: 8 },
+    { point: "Hill Road", distance: "0.5", obstacles: 12 },
+    { point: "Linking Road", distance: "1.0", obstacles: 15 },
+    { point: "S.V. Road", distance: "1.5", obstacles: 20 },
+    { point: "Turner Road", distance: "2.0", obstacles: 10 },
+    { point: "Pali Hill", distance: "2.5", obstacles: 5 },
+    { point: "Santacruz Market", distance: "3.0", obstacles: 3 },
   ];
 
-  const pedestrianData = [
-    { time: "6 AM", count: 250 },
-    { time: "9 AM", count: 520 },
-    { time: "12 PM", count: 320 },
-    { time: "3 PM", count: 380 },
-    { time: "6 PM", count: 580 },
-    { time: "9 PM", count: 280 },
+  const pedestrianUsageData = [
+    { type: "Daily Commute", value: 45, color: "#22C55E" },
+    { type: "Weekly Visit", value: 30, color: "#3B82F6" },
+    { type: "Monthly Visit", value: 15, color: "#EAB308" },
+    { type: "Rare Visit", value: 10, color: "#EF4444" },
   ];
 
-  const maintenanceData = [
-    { type: "Good", value: 75, color: "#4CAF50" },
-    { type: "Fair", value: 20, color: "#FFC107" },
-    { type: "Poor", value: 5, color: "#F44336" },
+  const footpathConditionData = [
+    { type: "Good Condition", value: 35, color: "#22C55E" },
+    { type: "Average Condition", value: 40, color: "#EAB308" },
+    { type: "Poor Condition", value: 25, color: "#EF4444" },
   ];
 
   return (
@@ -58,19 +70,21 @@ const JourneyPage = () => {
           </h1>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="bg-gray-800 rounded-xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:shadow-blue-700/20 hover:scale-105"
-              >
-                <h3 className="text-lg font-medium text-blue-400 mb-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {stats.map((stat, index) => (
+            <div key={index} className="bg-gray-800 rounded-xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:shadow-blue-700/20 hover:scale-105">
+              <div className="text-center">
+                <p className="text-lg font-medium text-blue-400 mb-2">
                   {stat.label}
-                </h3>
-                <p className="text-4xl font-bold text-white">{stat.value}</p>
+                </p>
+                <p className="text-4xl font-bold text-white">
+                  {stat.value}
+                </p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+
 
           {/* Analysis Section */}
           <div className="mb-16">
@@ -87,66 +101,98 @@ const JourneyPage = () => {
           </div>
 
           {/* Survey Charts */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {/* Obstacles Chart */}
-            <div className="bg-gray-800 rounded-xl p-6 aspect-square">
-              <h3 className="text-lg font-medium text-blue-400 mb-4 text-center">
-                Types of Obstacles
-              </h3>
-              <ResponsiveContainer width="100%" height="80%">
-                <BarChart data={accessibilityData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="category" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="count" fill="#60A5FA" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-
-            {/* Pedestrian Traffic Chart */}
-            <div className="bg-gray-800 rounded-xl p-6 aspect-square">
-              <h3 className="text-lg font-medium text-blue-400 mb-4 text-center">
-                Daily Pedestrian Traffic
-              </h3>
-              <ResponsiveContainer width="100%" height="80%">
-                <LineChart data={pedestrianData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="time" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="count" stroke="#60A5FA" />
+                 {/* Charts Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+          {/* Obstacle Distribution Chart */}
+          <div className="p-6 bg-gray-800 border border-gray-700 rounded-lg">
+            <h2 className="text-lg font-medium text-blue-400 mb-4">
+              Obstacle Distribution
+            </h2>
+            <div className="h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={obstacleDistributionData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                  <XAxis
+                    dataKey="point"
+                    tick={{ fill: '#9CA3AF' }}
+                    angle={-45}
+                    textAnchor="end"
+                    height={80}
+                  />
+                  <YAxis tick={{ fill: '#9CA3AF' }} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="obstacles"
+                    stroke="#3B82F6"
+                    strokeWidth={2}
+                    dot={{ fill: '#3B82F6', r: 4 }}
+                    activeDot={{ r: 6 }}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </div>
+          </div>
 
-            {/* Infrastructure Maintenance Chart */}
-            <div className="bg-gray-800 rounded-xl p-6 aspect-square">
-              <h3 className="text-lg font-medium text-blue-400 mb-4 text-center">
-                Infrastructure Condition
-              </h3>
-              <ResponsiveContainer width="100%" height="80%">
+          {/* Pedestrian Usage Chart */}
+          <div className="p-6 bg-gray-800 border border-gray-700 rounded-lg">
+            <h2 className="text-lg font-medium text-blue-400 mb-4">
+              Pedestrian Usage Frequency
+            </h2>
+            <div className="h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
-                    data={maintenanceData}
-                    dataKey="value"
-                    nameKey="type"
+                    data={pedestrianUsageData}
                     cx="50%"
                     cy="50%"
                     innerRadius={60}
                     outerRadius={80}
-                    label
+                    paddingAngle={2}
+                    dataKey="value"
+                    nameKey="type"
                   >
-                    {maintenanceData.map((entry, index) => (
+                    {pedestrianUsageData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
                   <Tooltip />
+                  <Legend />
                 </PieChart>
               </ResponsiveContainer>
             </div>
           </div>
 
+          {/* Footpath Condition Chart */}
+          <div className="p-6 bg-gray-800 border border-gray-700 rounded-lg">
+            <h2 className="text-lg font-medium text-blue-400 mb-4">
+              Footpath Condition
+            </h2>
+            <div className="h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={footpathConditionData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={80}
+                    paddingAngle={2}
+                    dataKey="value"
+                    nameKey="type"
+                  >
+                    {footpathConditionData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
           {/* Key Findings */}
           <div className="mb-16">
             <p className="text-gray-300 leading-relaxed text-lg">

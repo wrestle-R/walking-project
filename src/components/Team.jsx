@@ -86,7 +86,7 @@ const Team = () => {
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className="bg-[#f2f2f2] rounded-2xl p-8 shadow-sm min-h-[140px] transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg hover:bg-slate-200"
+                className="bg-slate-200 rounded-2xl p-8 shadow-sm min-h-[140px] transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg hover:bg-slate-200"
               >
                 <div className="flex items-center gap-8">
                   {/* Avatar */}
