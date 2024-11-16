@@ -2,7 +2,7 @@
   "name": "walking-project",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://wrestle-R.github.io/walking-project/",
+  "homepage": "https://wrestle-r.github.io/walking-project/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",

@@ -17,7 +17,7 @@ import Carousel from "./components/Carousel";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/walking-project/">  {/* Add basename here */}
       <Routes>
         <Route path="/walk1" element={<Walk1 />} />
         <Route path="/walk2" element={<Walk2 />} />
