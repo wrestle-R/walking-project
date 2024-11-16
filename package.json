@@ -2,12 +2,12 @@
   "name": "walking-project",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://wrestle-R.github.io/walking-project",
+  "homepage": "https://wrestle-R.github.io/walking-project/",
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "deploy": "gh-pages -d dist",
     "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
