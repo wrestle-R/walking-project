@@ -5,9 +5,9 @@
   "homepage": "https://wrestle-R.github.io/walking-project/",
   "type": "module",
   "scripts": {
-    "build": "vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
+    "build": "vite build",
     "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
