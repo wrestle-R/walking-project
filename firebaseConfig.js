@@ -3,13 +3,13 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB4prsShuzJu87cSGzaPTHYp7Ui-8T7ahE",
-  authDomain: "cep-walking.firebaseapp.com",
-  projectId: "cep-walking",
-  storageBucket: "cep-walking.firebasestorage.app",
-  messagingSenderId: "672795658256",
-  appId: "1:672795658256:web:c97d1cb22b75c41d4ba295",
-  measurementId: "G-YNX0CRSSEY",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
